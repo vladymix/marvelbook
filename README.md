@@ -1,7 +1,7 @@
 # marvelbook
 API Marver developer
 
-![icon](https://github.com/vladymix/marvelbook/blob/master/Resources/app_desing.png)
+![icon](https://github.com/vladymix/marvelbook/blob/master/app_desing.png)
 
 
 
