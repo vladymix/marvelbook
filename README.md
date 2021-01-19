@@ -4,7 +4,6 @@ API Marver developer
 ![icon](https://github.com/vladymix/marvelbook/blob/master/app_desing.png)
 
 
-
 # Importacion de librerias
    // To load images
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -21,6 +20,9 @@ API Marver developer
 # Asignación de memoria
 
 En clase MarvelService el atributos service lo declaro como by lazy para reducir el tamaño de asignación de memoria.
+
+```groovy
+
   companion object {
         val instance:IMarvelService by lazy {
             MarvelService()
@@ -39,7 +41,7 @@ private var mInstance:IMarverService?=null;
         return mInstance!!
     }
 }
-
+```
 
  Solo cuando voy a utilizar la variable service se inicializa caso contrario Android no reserva memoria para esa variable.
 
@@ -51,6 +53,8 @@ Como el servicio siempre devuelve un 200 para las peticiónes, y dentro del cuer
 Como la vista solo tiene que mostrar el mensaje el metodo de la vista es view.errorOperation(idMessage)
 
 ## MarvelService
+
+```groovy
  if (response.code() != 200) {
             val error = when (response.code()) {
                 401 -> Exception401()
@@ -61,12 +65,15 @@ Como la vista solo tiene que mostrar el mensaje el metodo de la vista es view.er
             }
             presenter.invalidOperation(error)
  }
+``` 
 
  ## CharactersActivityView
 
+```groovy
  override fun errorOperation(stringRes: Int) {
        Toast.makeText(this, stringRes,Toast.LENGTH_LONG).show()
  }
+ ``` 
 
  # Lottie animacion
  Yo personalmente he aprendido a utilizar esta libreria, ya que considero que tiene un gran grupo de desarrollo por detraz, a demás como controlo programas de diseño como adobe illustrator tengo la posibilidad de crear de una forma rapida mis propias animaciones. La carga inicial la hice para esta app
@@ -77,6 +84,7 @@ Como la vista solo tiene que mostrar el mensaje el metodo de la vista es view.er
 
  Como testing he creado 4 que considero los mas relevantes.
 
+```groovy
  testingHashId() // Verificar si el hashid es el correcto ya que sin esto el servicio nos daria un fallo de autenticación y el proposito de la aplicación no se cumpliria
 
  testCreateUrl() // Como tenemos que darle formato a las url concatenando este metodo me verifca que se concatene correctamente
@@ -86,6 +94,7 @@ Como la vista solo tiene que mostrar el mensaje el metodo de la vista es view.er
  testLoadCharacters() // Verifica que recoge la respuesta y sea el codigo correcto
 
  testLoadCharactersBody() // Verifica que el cuerpo de la respuesta sea la correcta.
+  ``` 
 
 
 
