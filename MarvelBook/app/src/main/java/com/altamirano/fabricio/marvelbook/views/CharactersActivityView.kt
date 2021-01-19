@@ -15,6 +15,8 @@ import com.altamirano.fabricio.marvelbook.interfaces.ICharactersView
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.models.RecyclerPagination
 import com.altamirano.fabricio.marvelbook.presenters.CharactersPresenter
+import com.altamirano.fabricio.marvelbook.services.IMarvelService
+import com.altamirano.fabricio.marvelbook.services.MarvelService
 
 class CharactersActivityView : AppCompatActivity(), ICharactersView {
     lateinit var presenter:ICharactersPresenter
@@ -46,7 +48,7 @@ class CharactersActivityView : AppCompatActivity(), ICharactersView {
                 }
             })
         }
-        presenter = CharactersPresenter(this)
+        presenter = CharactersPresenter(this, MarvelService.instance)
         presenter.loadCharacters()
     }
 

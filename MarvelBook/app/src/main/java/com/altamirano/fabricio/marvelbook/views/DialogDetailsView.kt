@@ -17,6 +17,7 @@ import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsPresenter
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsView
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.presenters.CharacterDetailsPresenter
+import com.altamirano.fabricio.marvelbook.services.MarvelService
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class DialogDetailsView : BottomSheetDialogFragment(), ICharactersDetailsView {
@@ -62,7 +63,7 @@ class DialogDetailsView : BottomSheetDialogFragment(), ICharactersDetailsView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        presenter = CharacterDetailsPresenter(this)
+        presenter = CharacterDetailsPresenter(this, MarvelService.instance)
         arguments?.getString(Constants.ID_CHARACTER)?.let { value ->
             presenter.loadCharacter(value)
         }

@@ -11,13 +11,14 @@ import com.altamirano.fabricio.marvelbook.models.Thumbnail
 import com.altamirano.fabricio.marvelbook.services.*
 import com.bumptech.glide.Glide
 
-class CharacterDetailsPresenter(private val view: ICharactersDetailsView) :
+class CharacterDetailsPresenter(private val view: ICharactersDetailsView,service: IMarvelService) :
+
     ICharactersDetailsPresenter {
 
     private val interactor: CharacterDetailsInteractor
 
     init {
-        interactor = CharacterDetailsInteractor(this)
+        interactor = CharacterDetailsInteractor(this,service)
     }
 
     override fun showResult(character: Character) {

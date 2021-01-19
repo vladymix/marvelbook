@@ -6,17 +6,14 @@ import com.altamirano.fabricio.marvelbook.interfaces.ICharactersInteractor
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersPresenter
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersView
 import com.altamirano.fabricio.marvelbook.models.Character
-import com.altamirano.fabricio.marvelbook.services.Exception401
-import com.altamirano.fabricio.marvelbook.services.Exception403
-import com.altamirano.fabricio.marvelbook.services.Exception405
-import com.altamirano.fabricio.marvelbook.services.Exception409
+import com.altamirano.fabricio.marvelbook.services.*
 
-class CharactersPresenter(val view:ICharactersView) : ICharactersPresenter {
+class CharactersPresenter(val view:ICharactersView,  service:IMarvelService) : ICharactersPresenter {
 
     private val interactor:ICharactersInteractor
 
     init {
-        interactor = CharactersInteractor(this)
+        interactor = CharactersInteractor(this, service)
     }
     override fun showResults(charactersList: List<Character>) {
         view.showResults(charactersList)

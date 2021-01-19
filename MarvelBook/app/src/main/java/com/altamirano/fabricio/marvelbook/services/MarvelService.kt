@@ -8,7 +8,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MarvelService private constructor() {
+class MarvelService private constructor() : IMarvelService {
     companion object {
         val instance by lazy {
             MarvelService()
@@ -19,7 +19,7 @@ class MarvelService private constructor() {
         .addConverterFactory(GsonConverterFactory.create())
         .build().create(IApiService::class.java)
 
-    fun listCharacters(offset: Int, listener: Callback<ResponseCharacters>) {
+    override fun listCharacters(offset: Int, listener: Callback<ResponseCharacters>) {
         api.listCharacters(Constants.HASH_ID, offset)
             .enqueue(object : Callback<ResponseCharacters> {
                 override fun onResponse(
@@ -47,8 +47,8 @@ class MarvelService private constructor() {
             })
     }
 
-    fun loadCharacter(id: String, listener: Callback<ResponseCharacters>) {
-        api.getCharacter(id, Constants.HASH_ID).enqueue(object : Callback<ResponseCharacters>{
+    override fun loadCharacter(id: String, listener: Callback<ResponseCharacters>) {
+        api.getCharacter(id, Constants.HASH_ID).enqueue(object : Callback<ResponseCharacters> {
             override fun onResponse(
                 call: Call<ResponseCharacters>,
                 response: Response<ResponseCharacters>

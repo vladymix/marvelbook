@@ -8,13 +8,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CharactersInteractor(private val presenter: ICharactersPresenter) : ICharactersInteractor,
+class CharactersInteractor(private val presenter: ICharactersPresenter, private val service:IMarvelService) : ICharactersInteractor,
     Callback<ResponseCharacters> {
 
     private var offset: Int = 0
-    private val service: MarvelService by lazy {
-        MarvelService.instance
-    }
 
     override fun loadCharacters(nameStartsWith: String?) {
         if (nameStartsWith.isNullOrBlank())
