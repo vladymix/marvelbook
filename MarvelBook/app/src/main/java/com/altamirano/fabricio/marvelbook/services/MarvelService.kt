@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MarvelService private constructor() : IMarvelService {
     companion object {
-        val instance by lazy {
+        val instance:IMarvelService by lazy {
             MarvelService()
         }
     }
