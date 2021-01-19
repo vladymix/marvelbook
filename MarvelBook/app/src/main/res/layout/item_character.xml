@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="246dp"
+    app:cardCornerRadius="6dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:id="@+id/bigContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="@string/ctd_image_character"
+            android:maxHeight="500dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image_not_available" />
+
+        <ImageView
+            android:id="@+id/imgIsPreview"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:contentDescription="@string/ctd_visualized"
+            android:src="@drawable/ic_eye" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_separation">
+
+            <TextView
+                android:id="@+id/tvTitleCharacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/ctd_title_character"
+                android:text="Title character"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDescriptionCharacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/ctd_description_character"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Description character"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_very_small" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MarvelBook</string>
+    <string name="ctd_visualized">article already visualized</string>
+    <string name="ctd_no_visualized">article already visualized</string>
+    <string name="ctd_image_character">Image to character</string>
+    <string name="ctd_title_character">Title to character</string>
+    <string name="ctd_description_character">Description character</string>
+
+
+    <string name="error_401">Invalid Referer</string>
+    <string name="error_403">Forbidden</string>
+    <string name="error_404">Character not found.</string>
+    <string name="error_405">Method Not Allowed</string>
+    <string name="error_409">Missing API Key or Missing Hash or Missing Timestamp</string>
+    <string name="error_generic">An error has occurred, try again later</string>
+    <string name="lb_comics">Comics</string>
+    <string name="lb_series">Series</string>
+
+
+</resources>
