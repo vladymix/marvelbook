@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.altamirano.fabricio.marvelbook.Constants
+import com.altamirano.fabricio.marvelbook.Constants.setAsShowed
 import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.adapters.AdapterItems
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsPresenter
@@ -69,6 +70,9 @@ class DialogDetailsView : BottomSheetDialogFragment(), ICharactersDetailsView {
     }
 
     override fun showResult(character: Character) {
+
+        this.context?.setAsShowed(character.id!!)
+
         mTitle?.let {
             it.text = character.name
         }

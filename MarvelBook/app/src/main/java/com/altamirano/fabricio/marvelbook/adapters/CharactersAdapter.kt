@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.altamirano.fabricio.marvelbook.Constants.getAsUrl
 import com.altamirano.fabricio.marvelbook.Constants.inflate
+import com.altamirano.fabricio.marvelbook.Constants.isShowed
 import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.bumptech.glide.Glide
@@ -21,6 +22,7 @@ class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.CharactersHolde
         val mTitle = itemView.findViewById<TextView>(R.id.tvTitleCharacter)
         val mDescription = itemView.findViewById<TextView>(R.id.tvDescriptionCharacter)
         val imgCharacter = itemView.findViewById<ImageView>(R.id.imgCharacter)
+        val imgIsPreview = itemView.findViewById<ImageView>(R.id.imgIsPreview)
 
         fun bindValue(position: Int) {
             itemView.setOnClickListener {
@@ -35,6 +37,14 @@ class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.CharactersHolde
                     Glide.with(imgCharacter.context)
                         .load(url).placeholder(R.drawable.ic_heart)
                         .into(imgCharacter)
+                }
+
+                imgIsPreview.visibility = View.GONE
+
+                it.id?.let { id->
+                    if(imgIsPreview.context.isShowed(id)){
+                        imgIsPreview.visibility = View.VISIBLE
+                    }
                 }
             }
         }
