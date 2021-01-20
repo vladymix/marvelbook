@@ -12,13 +12,14 @@ import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.adapters.CharactersAdapter
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersPresenter
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersView
+import com.altamirano.fabricio.marvelbook.interfaces.IFragmentListener
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.models.RecyclerPagination
 import com.altamirano.fabricio.marvelbook.presenters.CharactersPresenter
 import com.altamirano.fabricio.marvelbook.services.IMarvelService
 import com.altamirano.fabricio.marvelbook.services.MarvelService
 
-class CharactersActivityView : AppCompatActivity(), ICharactersView {
+class CharactersActivityView : AppCompatActivity(), ICharactersView, IFragmentListener<Character> {
     lateinit var presenter:ICharactersPresenter
     lateinit var adapter:CharactersAdapter
 
@@ -67,7 +68,6 @@ class CharactersActivityView : AppCompatActivity(), ICharactersView {
                 this.putString(Constants.DESCRIPTION_CHARACTER, item.description)
             }
         }
-
         dialog.show(supportFragmentManager, "details")
     }
 
@@ -79,5 +79,9 @@ class CharactersActivityView : AppCompatActivity(), ICharactersView {
 
     override fun errorOperation(stringRes: Int) {
        Toast.makeText(this, stringRes,Toast.LENGTH_LONG).show()
+    }
+
+    override fun  onInteraction(obj: Character) {
+        adapter.notifyItemPreviewed(obj)
     }
 }

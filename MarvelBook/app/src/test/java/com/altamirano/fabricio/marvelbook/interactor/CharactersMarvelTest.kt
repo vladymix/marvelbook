@@ -26,8 +26,8 @@ class CharactersMarvelTest : TestCase() {
     public override fun setUp() {
 
         MockitoAnnotations.initMocks(this)
-        mocServer = MockWebServer()
-        mocServer.start()
+     /*   mocServer = MockWebServer()
+        mocServer.start()*/
 
         marvelService = Retrofit.Builder().baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

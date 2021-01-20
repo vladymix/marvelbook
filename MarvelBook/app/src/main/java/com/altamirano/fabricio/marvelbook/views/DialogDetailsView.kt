@@ -1,5 +1,6 @@
 package com.altamirano.fabricio.marvelbook.views
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.adapters.AdapterItems
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsPresenter
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsView
+import com.altamirano.fabricio.marvelbook.interfaces.IFragmentListener
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.presenters.CharacterDetailsPresenter
 import com.altamirano.fabricio.marvelbook.services.MarvelService
@@ -30,6 +32,14 @@ class DialogDetailsView : BottomSheetDialogFragment(), ICharactersDetailsView {
 
     var mAdapterComics: AdapterItems?=null
     var mAdapterSeries: AdapterItems?=null
+    var interactor:IFragmentListener<Character>?=null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is IFragmentListener<*>){
+            interactor = context as IFragmentListener<Character>
+        }
+    }
 
 
     override fun onCreateView(
@@ -73,6 +83,7 @@ class DialogDetailsView : BottomSheetDialogFragment(), ICharactersDetailsView {
     override fun showResult(character: Character) {
 
         this.context?.setAsShowed(character.id!!)
+        interactor?.onInteraction(character)
 
         mTitle?.let {
             it.text = character.name

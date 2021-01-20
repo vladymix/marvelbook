@@ -64,4 +64,18 @@ class CharactersAdapter : RecyclerView.Adapter<CharactersAdapter.CharactersHolde
     }
 
     override fun getItemCount(): Int = source.size
+
+    fun notifyItemPreviewed(obj: Character) {
+        var findPosition = -1
+        var counter = 0
+        while(findPosition ==-1 && counter < source.size){
+            if(obj.id == source[counter].id){
+                findPosition = counter
+            }
+            counter++
+        }
+        if(findPosition>=0){
+            this.notifyItemChanged(findPosition)
+        }
+    }
 }
