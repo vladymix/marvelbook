@@ -1,7 +1,7 @@
 package com.altamirano.fabricio.marvelbook.interactor
 
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersInteractor
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersPresenter
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersInteractor
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersPresenter
 import com.altamirano.fabricio.marvelbook.models.ResponseCharacters
 import com.altamirano.fabricio.marvelbook.services.*
 import retrofit2.Call

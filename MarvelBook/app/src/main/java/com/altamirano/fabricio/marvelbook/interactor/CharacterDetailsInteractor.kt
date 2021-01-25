@@ -1,14 +1,15 @@
 package com.altamirano.fabricio.marvelbook.interactor
 
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDeatilsInteractor
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsPresenter
+import com.altamirano.fabricio.marvelbook.interfaces.details.ICharactersDeatilsInteractor
+import com.altamirano.fabricio.marvelbook.interfaces.details.ICharactersDetailsPresenter
 import com.altamirano.fabricio.marvelbook.models.ResponseCharacters
 import com.altamirano.fabricio.marvelbook.services.IMarvelService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CharacterDetailsInteractor(private var presenter:ICharactersDetailsPresenter,private val service: IMarvelService) :ICharactersDeatilsInteractor,
+class CharacterDetailsInteractor(private var presenter: ICharactersDetailsPresenter, private val service: IMarvelService) :
+    ICharactersDeatilsInteractor,
     Callback<ResponseCharacters> {
 
     override fun loadCharacter(id: String) {

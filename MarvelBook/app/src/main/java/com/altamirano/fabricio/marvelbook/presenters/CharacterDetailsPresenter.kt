@@ -5,14 +5,14 @@ import com.altamirano.fabricio.marvelbook.Constants.getAsUrl
 import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.exceptions.MarvelApiException
 import com.altamirano.fabricio.marvelbook.interactor.CharacterDetailsInteractor
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsPresenter
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsView
+import com.altamirano.fabricio.marvelbook.interfaces.details.ICharactersDetailsPresenter
+import com.altamirano.fabricio.marvelbook.interfaces.details.ICharactersDetailsView
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.models.Thumbnail
 import com.altamirano.fabricio.marvelbook.services.*
 import com.bumptech.glide.Glide
 
-class CharacterDetailsPresenter(private val view: ICharactersDetailsView,service: IMarvelService) :
+class CharacterDetailsPresenter(private val view: ICharactersDetailsView, service: IMarvelService) :
 
     ICharactersDetailsPresenter {
 

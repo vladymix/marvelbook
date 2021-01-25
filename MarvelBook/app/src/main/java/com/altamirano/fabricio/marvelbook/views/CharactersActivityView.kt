@@ -5,22 +5,20 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.altamirano.fabricio.marvelbook.Constants
 import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.adapters.CharactersAdapter
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersPresenter
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersView
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersPresenter
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersView
 import com.altamirano.fabricio.marvelbook.interfaces.IFragmentListener
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.models.RecyclerPagination
 import com.altamirano.fabricio.marvelbook.presenters.CharactersPresenter
-import com.altamirano.fabricio.marvelbook.services.IMarvelService
 import com.altamirano.fabricio.marvelbook.services.MarvelService
 
 class CharactersActivityView : AppCompatActivity(), ICharactersView, IFragmentListener<Character> {
-    lateinit var presenter:ICharactersPresenter
+    lateinit var presenter: ICharactersPresenter
     lateinit var adapter:CharactersAdapter
 
     private var progressIndicator: ProgressBar?=null

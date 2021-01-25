@@ -14,9 +14,9 @@ import com.altamirano.fabricio.marvelbook.Constants
 import com.altamirano.fabricio.marvelbook.Constants.setAsShowed
 import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.adapters.AdapterItems
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsPresenter
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersDetailsView
 import com.altamirano.fabricio.marvelbook.interfaces.IFragmentListener
+import com.altamirano.fabricio.marvelbook.interfaces.details.ICharactersDetailsPresenter
+import com.altamirano.fabricio.marvelbook.interfaces.details.ICharactersDetailsView
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.presenters.CharacterDetailsPresenter
 import com.altamirano.fabricio.marvelbook.services.MarvelService
@@ -24,19 +24,19 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class DialogDetailsView : BottomSheetDialogFragment(), ICharactersDetailsView {
 
-    lateinit var presenter: ICharactersDetailsPresenter
+    private lateinit var presenter: ICharactersDetailsPresenter
 
-    var mImage: ImageView? = null
-    var mTitle: TextView? = null
-    var mDescription: TextView? = null
+    private var mImage: ImageView? = null
+    private var mTitle: TextView? = null
+    private var mDescription: TextView? = null
 
-    var mAdapterComics: AdapterItems?=null
-    var mAdapterSeries: AdapterItems?=null
-    var interactor:IFragmentListener<Character>?=null
+    private var mAdapterComics: AdapterItems? = null
+    private var mAdapterSeries: AdapterItems? = null
+    private var interactor: IFragmentListener<Character>? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is IFragmentListener<*>){
+        if (context is IFragmentListener<*>) {
             interactor = context as IFragmentListener<Character>
         }
     }

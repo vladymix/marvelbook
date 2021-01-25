@@ -1,6 +1,5 @@
-package com.altamirano.fabricio.marvelbook.interfaces
+package com.altamirano.fabricio.marvelbook.interfaces.details
 
-import android.graphics.Bitmap
 import com.altamirano.fabricio.marvelbook.models.Character
 
 interface ICharactersDetailsView {

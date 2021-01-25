@@ -1,4 +1,4 @@
-package com.altamirano.fabricio.marvelbook.interfaces
+package com.altamirano.fabricio.marvelbook.interfaces.character
 
 import com.altamirano.fabricio.marvelbook.models.Character
 

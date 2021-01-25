@@ -3,15 +3,16 @@ package com.altamirano.fabricio.marvelbook.presenters
 import com.altamirano.fabricio.marvelbook.R
 import com.altamirano.fabricio.marvelbook.exceptions.MarvelApiException
 import com.altamirano.fabricio.marvelbook.interactor.CharactersInteractor
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersInteractor
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersPresenter
-import com.altamirano.fabricio.marvelbook.interfaces.ICharactersView
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersInteractor
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersPresenter
+import com.altamirano.fabricio.marvelbook.interfaces.character.ICharactersView
 import com.altamirano.fabricio.marvelbook.models.Character
 import com.altamirano.fabricio.marvelbook.services.*
 
-class CharactersPresenter(val view:ICharactersView,  service:IMarvelService) : ICharactersPresenter {
+class CharactersPresenter(val view: ICharactersView, service:IMarvelService) :
+    ICharactersPresenter {
 
-    private val interactor:ICharactersInteractor
+    private val interactor: ICharactersInteractor
 
     init {
         interactor = CharactersInteractor(this, service)
