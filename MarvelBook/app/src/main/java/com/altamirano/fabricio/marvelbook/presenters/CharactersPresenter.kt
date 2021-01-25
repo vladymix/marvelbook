@@ -1,6 +1,7 @@
 package com.altamirano.fabricio.marvelbook.presenters
 
 import com.altamirano.fabricio.marvelbook.R
+import com.altamirano.fabricio.marvelbook.exceptions.MarvelApiException
 import com.altamirano.fabricio.marvelbook.interactor.CharactersInteractor
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersInteractor
 import com.altamirano.fabricio.marvelbook.interfaces.ICharactersPresenter
@@ -21,17 +22,27 @@ class CharactersPresenter(val view:ICharactersView,  service:IMarvelService) : I
 
     override fun invalidOperation(t:Throwable) {
       val idMessage= when (t) {
-          is Exception401 -> {
-              R.string.error_401
-          }
-          is Exception403 -> {
-              R.string.error_403
-          }
-          is Exception405 -> {
-              R.string.error_405
-          }
-          is Exception409 -> {
-              R.string.error_409
+          is MarvelApiException -> {
+              when(t.code){
+                  401->{
+                      R.string.error_401
+                  }
+                  403->{
+                      R.string.error_403
+                  }
+                  404->{
+                      R.string.error_404
+                  }
+                  405->{
+                      R.string.error_405
+                  }
+                  409->{
+                      R.string.error_409
+                  }
+                  else ->{
+                      R.string.error_generic
+                  }
+              }
           }
           else -> {
               R.string.error_generic

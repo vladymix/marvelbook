@@ -1,6 +1,7 @@
 package com.altamirano.fabricio.marvelbook.services
 
 import com.altamirano.fabricio.marvelbook.Constants
+import com.altamirano.fabricio.marvelbook.exceptions.MarvelApiException
 import com.altamirano.fabricio.marvelbook.models.ResponseCharacters
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,14 +28,7 @@ class MarvelService private constructor() : IMarvelService {
                     response: Response<ResponseCharacters>
                 ) {
                     if (response.code() != 200 || response.body() == null) {
-                        val error = when (response.code()) {
-                            401 -> Exception401()
-                            403 -> Exception403()
-                            405 -> Exception405()
-                            409 -> Exception409()
-                            else -> Exception("Error when caller api")
-                        }
-                        listener.onFailure(call, error)
+                        listener.onFailure(call, getException(response.code()))
                     } else {
                         listener.onResponse(call, response)
                     }
@@ -54,15 +48,7 @@ class MarvelService private constructor() : IMarvelService {
                 response: Response<ResponseCharacters>
             ) {
                 if (response.code() != 200 || response.body() == null) {
-                    val error = when (response.code()) {
-                        401 -> Exception401()
-                        404 -> Exception404()
-                        403 -> Exception403()
-                        405 -> Exception405()
-                        409 -> Exception409()
-                        else -> Exception("Error when caller api")
-                    }
-                    listener.onFailure(call, error)
+                    listener.onFailure(call, getException(response.code()))
                 } else {
                     listener.onResponse(call, response)
                 }
@@ -72,6 +58,17 @@ class MarvelService private constructor() : IMarvelService {
                 listener.onFailure(call, t)
             }
         })
+    }
+
+    private fun getException(code:Int):Exception{
+      return when (code) {
+            401 -> MarvelApiException(401,"Invalid Referer | Invalid Hash","Occurs when a referrer which is not valid for the passed apikey parameter is sent. or Occurs when a ts, hash and apikey parameter are sent but the hash is not valid per the above hash generation rule.")
+            403 ->MarvelApiException(403,"Forbidden","Occurs when a user with an otherwise authenticated request attempts to access an endpoint to which they do not have access.")
+            405 -> MarvelApiException(405,"Method Not Allowed","Occurs when an API endpoint is accessed using an HTTP verb which is not allowed for that endpoint.")
+            409 ->MarvelApiException(409,"Missing API Key | Missing Hash | Missing Timestamp","Occurs when the apikey parameter is not included with a request.")
+            404 -> MarvelApiException(404,"Character not found.", "Character not found.")
+            else -> Exception("Error when caller api")
+        }
     }
 
 }
