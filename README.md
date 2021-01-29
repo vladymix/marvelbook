@@ -34,6 +34,8 @@ Como el servicio simpre devuelve un 200 para las peticiónes, y dentro del cuerp
 Como la vista solo tiene que mostrar el mensaje el metodo que controla esto es el caso de uso, enviando solo el texto
 
 ## MarvelRepositoryAPI
+
+```groovy
  if (response.code() != 200) {
            return when (code) {
             401 -> MarvelApiException(401,"Invalid Referer | Invalid Hash","Occurs when a referrer which is not valid for the passed apikey parameter is sent. or Occurs when a ts, hash and apikey parameter are sent but the hash is not valid per the above hash generation rule.")
@@ -44,7 +46,8 @@ Como la vista solo tiene que mostrar el mensaje el metodo que controla esto es e
             else -> Exception("Error when caller api")
         }
  }
-
+  ``` 
+  
  ## MarvelApplication
 
  Aqui se genera el primer lanzamiento de la aplicacion, ya que para que pueda existir una actividad tiene que generar primero la clase Application. 
