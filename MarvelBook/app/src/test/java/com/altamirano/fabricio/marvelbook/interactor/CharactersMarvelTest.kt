@@ -1,11 +1,11 @@
 package com.altamirano.fabricio.marvelbook.interactor
 
-import com.altamirano.fabricio.marvelbook.Constants
-import com.altamirano.fabricio.marvelbook.Constants.getAsUrl
-import com.altamirano.fabricio.marvelbook.models.ResponseCharacters
-import com.altamirano.fabricio.marvelbook.models.Thumbnail
+import com.altamirano.dagger.util.Constants
+import com.altamirano.dagger.util.Constants.getAsUrl
+import com.altamirano.dagger.models.ResponseCharacters
+import com.altamirano.dagger.models.Thumbnail
 import com.altamirano.fabricio.marvelbook.service.HandlerMarvelService
-import com.altamirano.fabricio.marvelbook.services.IApiService
+import com.altamirano.dagger.api.IApiService
 import com.google.gson.Gson
 import junit.framework.TestCase
 import okhttp3.mockwebserver.MockResponse
