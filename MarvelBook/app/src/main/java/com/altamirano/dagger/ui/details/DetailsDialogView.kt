@@ -8,15 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.altamirano.dagger.models.Character
 import com.altamirano.dagger.ui.base.BaseActivity
 import com.altamirano.dagger.ui.base.BaseFragmentDialog
+import com.altamirano.dagger.ui.base.IFragmentListener
 import com.altamirano.dagger.util.Constants
 import com.altamirano.dagger.util.Constants.setAsShowed
 import com.altamirano.fabricio.marvelbook.R
-import com.altamirano.dagger.ui.base.IFragmentListener
 import javax.inject.Inject
 
 class DetailsDialogView : BaseFragmentDialog(), DetailsView {
@@ -52,7 +53,8 @@ class DetailsDialogView : BaseFragmentDialog(), DetailsView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_details, container, false).apply { setupView(this) }
+        return inflater.inflate(R.layout.fragment_details, container, false)
+            .apply { setupView(this) }
     }
 
     private fun setupView(view: View) {
@@ -101,6 +103,7 @@ class DetailsDialogView : BaseFragmentDialog(), DetailsView {
     override fun showResult(character: Character) {
 
         this.context?.setAsShowed(character.id!!)
+
         listener?.onInteraction(character)
 
         mTitle?.let {
@@ -124,12 +127,12 @@ class DetailsDialogView : BaseFragmentDialog(), DetailsView {
     }
 
     override fun showConnectionError() {
-
+        // TODO show connection Error
     }
 
 
     override fun showDefaultError(message: String?) {
-
+        Toast.makeText(this.context, message, Toast.LENGTH_LONG).show()
     }
 
 }

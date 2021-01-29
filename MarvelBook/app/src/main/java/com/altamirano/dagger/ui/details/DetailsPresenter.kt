@@ -1,17 +1,19 @@
 package com.altamirano.dagger.ui.details
 
 import android.widget.ImageView
+import android.widget.Toast
+import com.altamirano.dagger.MarvelApplication
 import com.altamirano.dagger.domain.usecase.character.RequestCharacterUseCase
 import com.altamirano.dagger.models.Character
 import com.altamirano.dagger.models.Thumbnail
 import com.altamirano.dagger.threading.Threading
 import com.altamirano.dagger.ui.base.BasePresenter
 import com.altamirano.dagger.util.Constants.getAsUrl
+import com.altamirano.fabricio.marvelbook.R
 import com.bumptech.glide.Glide
 import javax.inject.Inject
 
-class DetailsPresenter @Inject constructor(threading: Threading) :
-    BasePresenter<DetailsView>(threading), RequestCharacterUseCase.Callback {
+class DetailsPresenter @Inject constructor(threading: Threading) : BasePresenter<DetailsView>(threading), RequestCharacterUseCase.Callback {
 
     @Inject
     lateinit var mUseCase: RequestCharacterUseCase
@@ -22,7 +24,7 @@ class DetailsPresenter @Inject constructor(threading: Threading) :
 
     fun loadImageInto(image: Thumbnail, imageView: ImageView?) {
         imageView?.let {
-            Glide.with(imageView.context).load(image.getAsUrl()).into(imageView)
+            Glide.with(it.context).load(image.getAsUrl()).into(it)
         }
     }
 
@@ -39,10 +41,14 @@ class DetailsPresenter @Inject constructor(threading: Threading) :
     }
 
     override fun onErrorRequestCharactersUseCase() {
-        TODO("Not yet implemented")
+        Toast.makeText(
+            MarvelApplication.context,
+            MarvelApplication.context?.resources?.getString(R.string.error_generic),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onShowErrorMessage(message: String?) {
-        TODO("Not yet implemented")
+        viewOrThrow.showDefaultError(message)
     }
 }

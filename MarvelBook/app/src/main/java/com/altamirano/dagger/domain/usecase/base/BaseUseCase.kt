@@ -6,9 +6,9 @@ import com.altamirano.dagger.exceptions.MarvelApiException
 import com.altamirano.dagger.threading.Threading
 
 
-abstract class BaseUseCase<Param, Callback : BaseUseCaseCallback?>(threading: Threading) {
+abstract class BaseUseCase<Param, Callback : BaseUseCaseCallback?>(protected  val threading: Threading) {
 
-    protected val threading: Threading
+    protected abstract fun runUseCase(param: Param, callback: Callback)
 
     var isCanceled = false
         private set
@@ -33,8 +33,6 @@ abstract class BaseUseCase<Param, Callback : BaseUseCaseCallback?>(threading: Th
         isCanceled = false
     }
 
-    protected abstract fun runUseCase(param: Param, callback: Callback)
-
     fun execute(params: Param, callback: Callback) {
 
         onStart()
@@ -56,7 +54,4 @@ abstract class BaseUseCase<Param, Callback : BaseUseCaseCallback?>(threading: Th
         threading.executeOnMainThread(r)
     }
 
-    init {
-        this.threading = threading
-    }
 }
