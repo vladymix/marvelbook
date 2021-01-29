@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.CharactersActivityView">
+    tools:context="com.altamirano.dagger.ui.list.CharactersActivity">
 
     <TextView
         android:id="@+id/tvTitle"
